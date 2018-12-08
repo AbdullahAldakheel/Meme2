@@ -39,7 +39,7 @@ extension ViewControllerTable: UICollectionViewDataSource {
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TabelView", for: indexPath) as? CollectionViewTable else {
-			fatalError("couldn't load cell for collection view")
+			fatalError("")
 		}
 		let Meme = Meme2[indexPath.row]
 		cell.imgPoster.image = Meme.memedImage
