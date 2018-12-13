@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController{
     var imgCheck = false
 	var grid: [Meme]!
-    var imgTmp:UIImage!
+    var Tmp:Meme!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,25 +24,38 @@ class ViewController: UIViewController{
 		}
         
 	}
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if imgCheck{
-            if (segue.identifier == "grid1") {
-                let orignalMeme = segue.destination as! ImgMaker
-                orignalMeme.changeImg(img: imgTmp, top: "gggg", bot: "Ggg")
 
-                
-                
-            }
-        }
+    
+    
+    
 
-    }
     
 	func bringMeme() -> [Meme] {
         return (UIApplication.shared.delegate as? AppDelegate)?.meme ?? []
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "grid1" {
+            let tmp = sender as? Meme
+            
+            let md = segue.destination as? MemeDetailsViewController
+            md?.meme1 = tmp
+            
+        }
+    }
+    
+    
+    
 }
 
-extension ViewController: UICollectionViewDelegate {}
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let memDetail = grid[(indexPath as NSIndexPath).row]
+        
+        performSegue(withIdentifier: "grid1", sender: memDetail)
+    }
+  
+}
 
 extension ViewController: UICollectionViewDataSource {
 
@@ -56,8 +69,8 @@ extension ViewController: UICollectionViewDataSource {
 		}
 		let Meme = grid[indexPath.row]
 		grid1.imgPoster.image = Meme.memedImage
-        self.imgTmp = grid1.imgPoster.image
-        self.imgCheck = true
+        
+    
 		return grid1
 	}
     
@@ -79,4 +92,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
+
+
 }
+
+
+

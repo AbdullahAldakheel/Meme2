@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC38D61121BD59F800D014F8 /* MemeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC38D61021BD59F800D014F8 /* MemeDetailsViewController.swift */; };
 		EC8473BC21BADB91000508AB /* ViewControllerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8473BB21BADB91000508AB /* ViewControllerTable.swift */; };
 		EC9C3E2C21B9830C0079F899 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9C3E2B21B9830B0079F899 /* ViewController.swift */; };
 		EC9C3E2F21B9831D0079F899 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9C3E2D21B9831D0079F899 /* CollectionViewCell.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC38D61021BD59F800D014F8 /* MemeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeDetailsViewController.swift; sourceTree = "<group>"; };
 		EC8473BB21BADB91000508AB /* ViewControllerTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTable.swift; sourceTree = "<group>"; };
 		EC9C3E2B21B9830B0079F899 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EC9C3E2D21B9831D0079F899 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				ECEE9E89219DCD3700C41789 /* AppDelegate.swift */,
 				ECEE9E8B219DCD3700C41789 /* ImgMaker.swift */,
 				ECEE9E8D219DCD3700C41789 /* Main.storyboard */,
+				EC38D61021BD59F800D014F8 /* MemeDetailsViewController.swift */,
 				ECEE9E90219DCD3900C41789 /* Assets.xcassets */,
 				ECEE9E92219DCD3900C41789 /* LaunchScreen.storyboard */,
 				ECEE9E95219DCD3900C41789 /* Info.plist */,
@@ -215,6 +218,7 @@
 				EC9C3E2F21B9831D0079F899 /* CollectionViewCell.swift in Sources */,
 				EC9C3E3021B9831D0079F899 /* model.swift in Sources */,
 				ECEE9E8C219DCD3700C41789 /* ImgMaker.swift in Sources */,
+				EC38D61121BD59F800D014F8 /* MemeDetailsViewController.swift in Sources */,
 				EC8473BC21BADB91000508AB /* ViewControllerTable.swift in Sources */,
 				EC9C3E3421B98F920079F899 /* CollectionViewTable.swift in Sources */,
 				ECEE9E8A219DCD3700C41789 /* AppDelegate.swift in Sources */,

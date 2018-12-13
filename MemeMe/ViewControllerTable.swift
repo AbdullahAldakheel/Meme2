@@ -16,7 +16,7 @@ class ViewControllerTable: UIViewController {
         super.viewDidLoad()
 		let appDelegate = UIApplication.shared.delegate as? AppDelegate
         if appDelegate?.meme == nil {
-			Meme2 = demoData()
+			Meme2 = bringData()
 			appDelegate?.meme = Meme2
 		} else {
 			Meme2 = appDelegate?.meme
@@ -24,12 +24,30 @@ class ViewControllerTable: UIViewController {
         
 	}
 
-	func demoData() -> [Meme] {
+	func bringData() -> [Meme] {
         return (UIApplication.shared.delegate as? AppDelegate)?.meme ?? []
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "grid1" {
+            let tmp = sender as? Meme
+            
+            let md = segue.destination as? MemeDetailsViewController
+            md?.meme1 = tmp
+            
+        }
+    }
+    
 }
 
-extension ViewControllerTable: UICollectionViewDelegate {}
+extension ViewControllerTable: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let memDetail = Meme2[(indexPath as NSIndexPath).row]
+        
+        performSegue(withIdentifier: "grid1", sender: memDetail)
+    }
+}
 
 extension ViewControllerTable: UICollectionViewDataSource {
 

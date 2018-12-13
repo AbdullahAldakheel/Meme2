@@ -9,7 +9,7 @@
 import UIKit
 
 class ImgMaker: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    
+    var meme1: Meme!
     @IBOutlet weak var topBar: UINavigationBar!
     @IBOutlet weak var bottomBar: UINavigationBar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
@@ -22,6 +22,7 @@ class ImgMaker: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     override func viewDidLoad() {
         super.viewDidLoad()
         shareButton.isEnabled = false
+     
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +31,12 @@ class ImgMaker: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         configureTextField (textF: bottomText, name: "BOTTOM")
         configureTextField (textF: topText, name: "TOP")
+        if meme1 != nil {
+            imagePickerView.image = meme1.originalImage
+            configureTextField (textF: bottomText, name: meme1.bottomText)
+            configureTextField (textF: topText, name: meme1.topText)
+            shareButton.isEnabled = true
+        }
         
     }
     
@@ -171,12 +178,24 @@ class ImgMaker: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         save()
 
         present(vc, animated: true)
+       // dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "GoMain", sender: "1")
+
+
     }
     
     func save() {
         
         let imageObject = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage() )
         (UIApplication.shared.delegate as? AppDelegate)?.meme.append(imageObject)
+        
+ 
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoMain" {
+            
+           segue.destination as? ViewController
+        }
     }
 
     
