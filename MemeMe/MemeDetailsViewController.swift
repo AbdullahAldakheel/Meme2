@@ -19,37 +19,20 @@ class MemeDetailsViewController: UIViewController, UIImagePickerControllerDelega
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-     
-        
-    }
-
-    
     @IBAction func pressEdit(_ sender: Any) {
         performSegue(withIdentifier: "goEdit", sender: meme1)
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goEdit" {
-            let Tmp = sender as? Meme
+            let tmp = sender as? Meme
             
             let md = segue.destination as? ImgMaker
-            md?.meme1 = Tmp
+            md?.meme1 = tmp
             
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }

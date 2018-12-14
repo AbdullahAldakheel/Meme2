@@ -22,7 +22,7 @@ class ImgMaker: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     override func viewDidLoad() {
         super.viewDidLoad()
         shareButton.isEnabled = false
-     
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +48,8 @@ class ImgMaker: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSAttributedString.Key(rawValue: NSAttributedString.Key.strokeWidth.rawValue): -2.0,]
         textF.defaultTextAttributes = memeTextAttributes
+        textF.textAlignment = .center
+        
         
         let fixedWidth = imagePickerView.frame.size.width
         let newSize = textF.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
@@ -57,19 +59,6 @@ class ImgMaker: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     @IBAction func sizeOfText(_ sender: Any) {
     }
-    
-    func changeImg(img : UIImage, top : String, bot: String){
-
-        let selectImage:UIImage =  img
-        
-            self.imagePickerView.image = selectImage
-            topText.text = top
-            bottomText.text = bot
-            
-            
-        }
-
-        
     
     override func viewWillDisappear(_ animated: Bool) {
         
@@ -102,6 +91,14 @@ class ImgMaker: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         }
     }
     
+    @IBAction func textFTopEnd(_ sender: Any) {
+        textFieldShouldReturn(sender as! UITextField)
+        
+    }
+    
+    @IBAction func textFBotEnd(_ sender: Any) {
+        textFieldShouldReturn(sender as! UITextField)
+    }
     @objc func keyboardwillshow (_ notification:Notification){
         if self.view.frame.origin.y == 0 && bottomText.isFirstResponder {
             self.view.frame.origin.y -= getKeyboardHeight(notification)
@@ -176,12 +173,12 @@ class ImgMaker: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             }
         }
         save()
-
+        
         present(vc, animated: true)
-       // dismiss(animated: true, completion: nil)
+        // dismiss(animated: true, completion: nil)
         performSegue(withIdentifier: "GoMain", sender: "1")
-
-
+        
+        
     }
     
     func save() {
@@ -189,28 +186,42 @@ class ImgMaker: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let imageObject = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage() )
         (UIApplication.shared.delegate as? AppDelegate)?.meme.append(imageObject)
         
- 
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoMain" {
             
-           segue.destination as? ViewController
+            segue.destination as? ViewController
         }
     }
-
+    
     
     func generateMemedImage() -> UIImage {
         
-        topBar.isHidden = true
-        bottomBar.isHidden = true
+        configureBars(true)
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        topBar.isHidden = false
-        bottomBar.isHidden = false
+        configureBars(false)
         return memedImage
     }
+    
+    func configureBars(_ isHidden: Bool) {
+        bottomBar.isHidden = isHidden
+        topBar.isHidden = isHidden
+    }
+}
+
+
+extension ImgMaker{
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
 }
 
 

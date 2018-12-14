@@ -9,22 +9,23 @@
 import UIKit
 
 class ViewControllerTable: UIViewController {
-
-	var Meme2: [Meme]!
-
+    
+    var Meme2: [Meme]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-		let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         if appDelegate?.meme == nil {
-			Meme2 = bringData()
-			appDelegate?.meme = Meme2
-		} else {
-			Meme2 = appDelegate?.meme
-		}
+            Meme2 = bringData()
+            appDelegate?.meme = Meme2
+        } else {
+            Meme2 = appDelegate?.meme
+        }
         
-	}
-
-	func bringData() -> [Meme] {
+    }
+    
+    
+    func bringData() -> [Meme] {
         return (UIApplication.shared.delegate as? AppDelegate)?.meme ?? []
     }
     
@@ -50,21 +51,21 @@ extension ViewControllerTable: UICollectionViewDelegate {
 }
 
 extension ViewControllerTable: UICollectionViewDataSource {
-
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return Meme2.count
-	}
-
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TabelView", for: indexPath) as? CollectionViewTable else {
-			fatalError("")
-		}
-		let Meme = Meme2[indexPath.row]
-		cell.imgPoster.image = Meme.memedImage
-		cell.topLabel.text = Meme.topText
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Meme2.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TabelView", for: indexPath) as? CollectionViewTable else {
+            fatalError("")
+        }
+        let Meme = Meme2[indexPath.row]
+        cell.imgPoster.image = Meme.memedImage
+        cell.topLabel.text = Meme.topText
         cell.botLabel.text = Meme.bottomText
-		return cell
-	}
+        return cell
+    }
 }
 
 extension ViewControllerTable: UICollectionViewDelegateFlowLayout {

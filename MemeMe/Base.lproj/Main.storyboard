@@ -58,22 +58,24 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" placeholder="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="66r-be-yxR">
-                                <rect key="frame" x="146" y="735" width="122" height="35"/>
+                                <rect key="frame" x="10" y="735" width="394" height="35"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="keyBoardDown:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="K8a-48-A18"/>
                                     <action selector="keyBoardUp:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="KpB-ZW-DYp"/>
+                                    <action selector="textFBotEnd:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="Trl-fp-PSh"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" placeholder="TOP" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="wtt-pN-6VR">
-                                <rect key="frame" x="177.5" y="136" width="59" height="35"/>
+                                <rect key="frame" x="10" y="136" width="394" height="35"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="sizeOfText:" destination="BYZ-38-t0r" eventType="editingChanged" id="0P2-Cr-dGv"/>
+                                    <action selector="textFTopEnd:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="V3a-Ao-gz6"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -81,13 +83,17 @@
                         <constraints>
                             <constraint firstItem="T0Z-Pp-RMN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6Cc-T5-v5r"/>
                             <constraint firstItem="nGn-GQ-Jpx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="853-Rh-NnA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wtt-pN-6VR" secondAttribute="trailing" constant="10" id="AJG-g0-dhZ"/>
                             <constraint firstItem="zep-G5-xTA" firstAttribute="top" secondItem="nGn-GQ-Jpx" secondAttribute="bottom" constant="28" id="BEz-dA-z6p"/>
+                            <constraint firstItem="66r-be-yxR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="FwQ-qY-rrk"/>
                             <constraint firstItem="wtt-pN-6VR" firstAttribute="top" secondItem="T0Z-Pp-RMN" secondAttribute="bottom" constant="48" id="GLK-XL-PAk"/>
                             <constraint firstItem="wtt-pN-6VR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Rj3-4d-63M"/>
                             <constraint firstItem="nGn-GQ-Jpx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WQY-OY-pWG"/>
                             <constraint firstItem="zep-G5-xTA" firstAttribute="top" secondItem="66r-be-yxR" secondAttribute="bottom" constant="48" id="Xnc-lt-jxP"/>
+                            <constraint firstItem="wtt-pN-6VR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="YuY-FA-AcX"/>
                             <constraint firstItem="T0Z-Pp-RMN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cXW-bs-ukw"/>
                             <constraint firstItem="zep-G5-xTA" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fMP-3f-QoN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="66r-be-yxR" secondAttribute="trailing" constant="10" id="gpE-zt-fQg"/>
                             <constraint firstItem="T0Z-Pp-RMN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="h42-IZ-Rwu"/>
                             <constraint firstItem="66r-be-yxR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hsf-9m-jJ0"/>
                             <constraint firstItem="nGn-GQ-Jpx" firstAttribute="top" secondItem="T0Z-Pp-RMN" secondAttribute="bottom" constant="28" id="iIi-MA-HHo"/>

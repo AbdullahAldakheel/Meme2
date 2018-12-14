@@ -10,27 +10,19 @@ import UIKit
 
 class ViewController: UIViewController{
     var imgCheck = false
-	var grid: [Meme]!
-    var Tmp:Meme!
-
+    var grid: [Meme]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-		let appDelegate = UIApplication.shared.delegate as? AppDelegate
-		if appDelegate?.meme == nil {
-			grid = bringMeme()
-			appDelegate?.meme = grid
-		} else {
-			grid = appDelegate?.meme
-		}
-        
-	}
-
-    
-    
-    
-
-    
-	func bringMeme() -> [Meme] {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        if appDelegate?.meme == nil {
+            grid = bringMeme()
+            appDelegate?.meme = grid
+        } else {
+            grid = appDelegate?.meme
+        }
+    }
+    func bringMeme() -> [Meme] {
         return (UIApplication.shared.delegate as? AppDelegate)?.meme ?? []
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,27 +46,27 @@ extension ViewController: UICollectionViewDelegate {
         
         performSegue(withIdentifier: "grid1", sender: memDetail)
     }
-  
+    
 }
 
 extension ViewController: UICollectionViewDataSource {
-
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return grid.count
-	}
-
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		guard let grid1 = collectionView.dequeueReusableCell(withReuseIdentifier: "grid", for: indexPath) as? CollectionViewCell else {
-			fatalError("")
-		}
-		let Meme = grid[indexPath.row]
-		grid1.imgPoster.image = Meme.memedImage
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return grid.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let grid1 = collectionView.dequeueReusableCell(withReuseIdentifier: "grid", for: indexPath) as? CollectionViewCell else {
+            fatalError("")
+        }
+        let Meme = grid[indexPath.row]
+        grid1.imgPoster.image = Meme.memedImage
         
+        
+        return grid1
+    }
     
-		return grid1
-	}
     
-
     
 }
 
@@ -84,16 +76,16 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth = width / 3
         return CGSize(width: cellWidth, height: 120)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
-
-
+    
+    
 }
 
 
